@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+set -x
+
+apt-get update
+DEBIAN_FRONTEND=noninteractive dpkg -i unofficialddns_1.0.0_all.deb || /bin/true
+DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install -f
+DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install python-certifi
+apt-get -y -u dist-upgrade
+apt-get clean
+ln -s /usr/bin/python2 /usr/bin/python2.6
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
