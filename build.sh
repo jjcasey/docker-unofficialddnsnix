@@ -1,2 +1,3 @@
 #! /bin/sh
-sudo docker build --network lan-services -t unofficialddns .
+docker network create -d bridge lan-services || /bin/true
+docker build --network lan-services -t unofficialddns .
